@@ -34,6 +34,20 @@ Es el proyecto de prácticas del bootcamp **Back-End Java con GenAI** (Accenture
 | Tests | JUnit 5, Mockito, MockMvc, `@DataJpaTest`, JaCoCo |
 | Otros | Maven, Docker |
 
+### Capturas
+
+**Documentación OpenAPI (Swagger UI)**: todos los endpoints, protegidos con JWT salvo el login.
+
+![Swagger UI](docs/capturas/taskmanager-01-swagger.png)
+
+**Regla de negocio**: una tarea de prioridad `HIGH` sin fecha límite se rechaza con un 400 que explica el motivo (validación personalizada `@RequiereFechaLimite`).
+
+![Tarea urgente sin fecha límite: 400 Bad Request](docs/capturas/taskmanager-02-regla-negocio.png)
+
+**Tests**: 35 tests unitarios, de controller, de repositorio y de integración.
+
+![Tests en verde](docs/capturas/taskmanager-03-tests.png)
+
 ---
 
 ## Funcionalidades
@@ -182,6 +196,7 @@ docker run -p 8080:8080 taskmanager:1.0
 ## Mejoras futuras
 
 - **Usuarios en base de datos** con roles, en lugar de las credenciales fijas del login.
+- **Ampliar los tests de la capa de servicio**: `CategoryServiceImpl` y `TagServiceImpl` aún no tienen tests unitarios propios.
 - **Completar el CRUD de etiquetas** (actualizar y eliminar).
 - **Relaciones unidireccionales y sin `cascade`**, como en el proyecto final, para simplificar el modelo.
 - **Docker Compose** con un contenedor de MySQL para que los datos persistan.
