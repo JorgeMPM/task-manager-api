@@ -3,8 +3,11 @@ package com.accenture.taskmanager.config;
 import org.springframework.context.annotation.Configuration;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.info.Contact;
 import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.servers.Server;
 
 /* Crea la clase OpenApiConfig con @Configuration y @OpenAPIDefinition:
@@ -21,15 +24,16 @@ import io.swagger.v3.oas.annotations.servers.Server;
         title = "Task Manager API",
         description = "API REST para la gestión de tareas, categorías y etiquetas",
         version = "1.0.0",
-        contact = @Contact(
-            name = "Jorge Martín",
-            email = "jorgemartinpm@gmail.com"
-        )
+        contact = @Contact(name = "Jorge Martín", email = "jorgemartinpm@gmail.com")
     ),
-    servers = @Server(
-        url = "http://localhost:8080",
-        description = "Servidor de desarrollo"
-    )
+    servers = @Server(url = "http://localhost:8080", description = "Servidor de desarrollo"),
+    security = @SecurityRequirement(name = "bearerAuth")
+)
+@SecurityScheme(
+    name = "bearerAuth",
+    type = SecuritySchemeType.HTTP,
+    scheme = "bearer",
+    bearerFormat = "JWT"
 )
 public class OpenApiConfig {
 }   

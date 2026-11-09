@@ -14,6 +14,7 @@ import com.accenture.taskmanager.dto.LoginRequestDTO;
 import com.accenture.taskmanager.dto.LoginResponseDTO;
 import com.accenture.taskmanager.security.JwtService;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -55,6 +56,7 @@ public class AuthController {
      * @param request La solicitud HTTP entrante.
      * @return Una respuesta con el token JWT si las credenciales son correctas, o un error si no lo son.
      */
+    @SecurityRequirements
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody LoginRequestDTO loginRequest, HttpServletRequest request) {
         if (ADMIN_USERNAME.equals(loginRequest.username()) && ADMIN_PASSWORD.equals(loginRequest.password())) {
