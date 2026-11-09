@@ -14,6 +14,7 @@ import com.accenture.taskmanager.dto.LoginRequestDTO;
 import com.accenture.taskmanager.dto.LoginResponseDTO;
 import com.accenture.taskmanager.security.JwtService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
@@ -30,6 +31,7 @@ import jakarta.validation.Valid;
  */
 @RestController
 @RequestMapping("/auth")
+@Tag(name = "Autenticación", description = "Inicio de sesión y obtención del token JWT")
 public class AuthController {
     
     private final JwtService jwtService;
