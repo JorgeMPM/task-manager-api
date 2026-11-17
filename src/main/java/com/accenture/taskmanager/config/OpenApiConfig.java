@@ -21,10 +21,10 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @Configuration
 @OpenAPIDefinition(
     info = @Info(
-        title = "Task Manager API",
+        title = "API REST para la Gestión de Tareas",
         description = "API REST para la gestión de tareas, categorías y etiquetas",
         version = "1.0.0",
-        contact = @Contact(name = "Jorge Martín", email = "jorgemartinpm@gmail.com")
+        contact = @Contact(name = "Jorge Martín Pérez Moreno", email = "jorgemartinpm@gmail.com")
     ),
     servers = @Server(url = "http://localhost:8080", description = "Servidor de desarrollo"),
     security = @SecurityRequirement(name = "bearerAuth")
