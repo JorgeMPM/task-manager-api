@@ -42,7 +42,7 @@ public class TaskServiceImpl  implements TaskService {
     // Mapper para convertir entre la entidad Task y sus DTOs.
     private final TaskMapper taskMapper;
 
-    // Añade el campo private final TagRepository tagRepository.
+    // Repositorio para validar y recuperar las etiquetas de una tarea.
     private final TagRepository tagRepository;
 
     /**
