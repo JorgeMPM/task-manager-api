@@ -67,7 +67,7 @@ Es el proyecto de prácticas del bootcamp **Back-End Java con GenAI** (Accenture
 
 ![Ciclo de vida de la tarea](docs/diagrams/ciclo-vida-tarea.svg)
 
-> Las transiciones de estado no están restringidas todavía: el estado se asigna tal cual desde el DTO. Ver [#N](https://github.com/JorgeMPM/task-manager-api/issues/N)
+> Las transiciones de estado no están restringidas todavía: el estado se asigna tal cual desde el DTO. Ver [#5](https://github.com/JorgeMPM/task-manager-api/issues/5)
 
 ## Funcionalidades
 
