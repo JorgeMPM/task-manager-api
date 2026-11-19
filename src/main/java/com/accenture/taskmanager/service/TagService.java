@@ -7,11 +7,6 @@ import com.accenture.taskmanager.dto.TagRequestDTO;
 import com.accenture.taskmanager.dto.TagResponseDTO;
 
 
-/* Crea la interfaz TagService con tres métodos para gestionar etiquetas:
-- findAll(): devuelve una List<TagResponseDTO> con todas las etiquetas.
-- findById(Long id): devuelve el TagResponseDTO correspondiente; lanza ResponseStatusException si no existe.
-- create(TagRequestDTO tagRequestDTO): crea la etiqueta y devuelve el TagResponseDTO creado.
-Añade javadoc en español a la interfaz y a cada método con @param, @return y @throws donde corresponda. — generado por IA */
 /**
  * Interfaz TagService que define las operaciones de negocio para gestionar etiquetas.
  */

@@ -19,14 +19,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
-/*
- Crea la clase AuthController anotada con @RestController y @RequestMapping("/auth"), con Javadoc de clase en español, e inyecta JwtService por constructor.
- Define dos constantes privadas con las credenciales de ejemplo, usuario "admin" y contraseña "admin123", precedidas del comentario // TODO: en producción esto debe venir de base de datos.
- Añade el método login con @PostMapping("/login") que reciba @Valid @RequestBody LoginRequestDTO y HttpServletRequest:
- si el usuario y la contraseña coinciden con las constantes, devuelve 200 OK con un LoginResponseDTO que contenga jwtService.generateToken(username)
- si no coinciden, devuelve 401 Unauthorized con un ErrorResponse construido igual que en GlobalExceptionHandler, con el mensaje "Credenciales incorrectas" y el path de request.getRequestURI().
- No registres ni devuelvas la contraseña. Usa imports y no nombres de clase completos. Añade Javadoc en español en la clase, el constructor y todos los métodos. — generado por IA
-*/
 /**
  * Controlador para la gestión de autenticación de usuarios.
  */

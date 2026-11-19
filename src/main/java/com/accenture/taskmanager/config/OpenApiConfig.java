@@ -10,10 +10,6 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.servers.Server;
 
-/* Crea la clase OpenApiConfig con @Configuration y @OpenAPIDefinition:
-   @Info con título, descripción, versión y contacto, y
-   @Server de desarrollo en http://localhost:8080.
-   Textos en español y Javadoc de clase en español. — generado por IA */
 /**
  * Clase de configuración para OpenAPI.
  * Configura la documentación de la API utilizando anotaciones de OpenAPI.

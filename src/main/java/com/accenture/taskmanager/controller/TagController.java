@@ -22,10 +22,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import com.accenture.taskmanager.dto.ErrorResponse;
 
-/* Crea la clase TagController anotada con @RestController y @RequestMapping("/api/v1/tags").
-Añade el campo private final TagService tagService inyectado por constructor.
-Añade javadoc en español a la clase y al constructor con @param. — generado por IA */
-/* Añade @Tag con name "Etiquetas" y una descripción en español. — generado por IA */
 /**
  * Controlador REST para la gestión de etiquetas en el sistema de gestión de
  * tareas.
@@ -48,15 +44,6 @@ public class TagController {
         this.tagService = tagService;
     }
 
-    /*
-     * Crea el método getAllTags anotado con @GetMapping que devuelva
-     * ResponseEntity<List<TagResponseDTO>> con ResponseEntity.ok de
-     * tagService.findAll().
-     * Añade javadoc en español con @return. — generado por IA
-     */
-    /*
-     * Añade @Operation con summary en español y @ApiResponses: 200 sin content. — generado por IA
-     */
     /**
      * Devuelve una lista con todas las etiquetas.
      *
@@ -72,18 +59,6 @@ public class TagController {
         return ResponseEntity.ok(tagService.findAll());
     }
 
-    /*
-     * Crea el método getTagById anotado con @GetMapping("/{id}") que
-     * reciba @PathVariable Long id y devuelva ResponseEntity<TagResponseDTO> con
-     * ResponseEntity.ok de tagService.findById(id), sin comprobar null porque el
-     * servicio lanza excepción si no existe.
-     * Añade javadoc en español con @param y @return indicando 200 OK o 404 NOT
-     * FOUND. — generado por IA
-     */
-    /*
-     * Añade @Operation con summary en español y @ApiResponses:
-     * 200 sin content y 404 con ErrorResponse. — generado por IA
-     */
     /**
      * Devuelve la etiqueta correspondiente al ID proporcionado.
      *
@@ -101,15 +76,6 @@ public class TagController {
         return ResponseEntity.ok(tagService.findById(id));
     }
 
-    /*
-     * Crea el método createTag anotado con @PostMapping que reciba @RequestBody
-     * TagRequestDTO tagRequestDTO y devuelva ResponseEntity<TagResponseDTO> con
-     * ResponseEntity.status(201).body del resultado de tagService.create.
-     * Añade javadoc en español con @param y @return indicando 201 CREATED. — generado por IA
-     */
-    /*
-     * Añade @Operation con summary en español y @ApiResponses: 201 sin content. — generado por IA
-     */
     /**
      * Crea una nueva etiqueta a partir de los datos proporcionados.
      *

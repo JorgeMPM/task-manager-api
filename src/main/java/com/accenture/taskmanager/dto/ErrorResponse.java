@@ -5,12 +5,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-/* Crea la clase record ErrorResponse con los campos: timestamp (LocalDateTime), status (int),
-   error (String), message (String), path (String) y errors (List<String>).
-   Anotado con @JsonInclude(JsonInclude.Include.NON_NULL) para que errors
-   no aparezca en el JSON cuando sea null.
-   Añade javadoc a nivel de record en español con un @param por campo. — generado por IA 
-*/
 /**
  * Representa la respuesta de error que se devuelve al cliente.
  *

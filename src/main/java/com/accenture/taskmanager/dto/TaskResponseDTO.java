@@ -9,14 +9,6 @@ import com.accenture.taskmanager.model.TaskStatus;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-/*
-Crea una clase record TaskResponseDTO con los datos que la API devuelve al cliente: id (Long), title (String), description (String), status (TaskStatus), priority (TaskPriority), dueDate (LocalDate) y createdAt (LocalDateTime)
-Añade javadoc en español a nivel de clase con un @param por cada componente. — generado por IA.
-*/
-// Añade al final del record el campo categoryName de tipo String con el nombre de la categoría, null si la tarea no tiene categoría — generado por IA
-/* Añade al record TaskResponseDTO el componente tags ({@code List<TagResponseDTO>}) al final, con las etiquetas asociadas a la tarea.
-Añade su @param en el javadoc y el import de java.util.List. — generado por IA */
-/* Añade @Schema solo con description y example en español a los campos id, createdAt, categoryName y tags. — generado por IA */
 /**
  * DTO de salida que representa la respuesta de la API con los datos de una tarea.
  *

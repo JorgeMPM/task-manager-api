@@ -10,16 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
-/*Crea la entidad JPA Tag en el paquete com.accenture.taskmanager.model.
-Mapea la clase a la tabla tag mediante @Entity y @Table(name = "tag").
-Añade los campos id de tipo Long y name de tipo String.
-El campo id debe utilizar @Id y @GeneratedValue(strategy = GenerationType.IDENTITY).
-Añade una colección Set<Task> tasks mediante @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY).
-No añadas @JoinTable en esta clase porque Tag es el lado inverso de la relación.
-No configures CascadeType.
-Incluye un constructor sin argumentos, los métodos necesarios y sus Javadoc en español, además del Javadoc de la clase.
-No crees Repository, Service ni Controller.
-— generado por IA*/
 /**
  * Clase que representa una etiqueta (tag) de tareas en el sistema de gestión de tareas.
  * Esta clase está mapeada a la tabla "tag" en la base de datos.   

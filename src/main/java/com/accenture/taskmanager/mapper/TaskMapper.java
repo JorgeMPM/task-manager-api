@@ -16,8 +16,6 @@ import com.accenture.taskmanager.model.Task;
 @Component
 public class TaskMapper {
 
-    /*Añade un campo private final TagMapper tagMapper inyectado por constructor, para reutilizar la conversión de Tag a TagResponseDTO.
-    Añade javadoc en español al constructor con @param. — generado por IA */
     private final TagMapper tagMapper;
 
     /**
@@ -29,8 +27,6 @@ public class TaskMapper {
         this.tagMapper = tagMapper;
     }
 
-    /* Reescribe toResponseDTO para que, además de categoryName, rellene tags con una List<TagResponseDTO> convirtiendo cada Tag de la tarea con tagMapper.toResponseDTO.
-    Si getTags() es null devuelve una lista vacía. Actualiza el javadoc en español con @param y @return. — generado por IA */
     /**
      * Transforma una entidad {@code Task} en un {@code TaskResponseDTO}, incluyendo el nombre de la categoría y las etiquetas asociadas.
      *
@@ -57,10 +53,6 @@ public class TaskMapper {
         );
     }
 
-    /*
-    Crea el método toEntity que reciba un TaskRequestDTO y devuelva una nueva entidad Task copiando title, description, status, priority y dueDate, sin asignar id ni createdAt
-    Añade javadoc en español con @param y @return. — generado por IA
-    */
     /**
      * Transforma un {@code TaskRequestDTO} en una nueva entidad {@code Task}.
      *

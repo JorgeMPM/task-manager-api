@@ -13,9 +13,6 @@ import com.accenture.taskmanager.model.Category;
 @Component
 public class CategoryMapper {
 
-    /*
-    Crea el método toResponseDTO que reciba una entidad Category y devuelva un CategoryResponseDTO copiando id, name y description
-    Añade javadoc en español con @param y @return. — generado por IA */
     /**
      * Convierte una entidad Category en un objeto CategoryResponseDTO.
      *
@@ -26,9 +23,6 @@ public class CategoryMapper {
         return new CategoryResponseDTO(category.getId(), category.getName(), category.getDescription());
     }
 
-    /*
-    Crea el método toEntity que reciba un CategoryRequestDTO y devuelva una nueva entidad Category copiando name y description, sin asignar id
-    Añade javadoc en español con @param y @return. — generado por IA */
     /**
      * Convierte un objeto CategoryRequestDTO en una nueva entidad Category.
      *

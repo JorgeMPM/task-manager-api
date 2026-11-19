@@ -28,13 +28,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import com.accenture.taskmanager.dto.ErrorResponse;
 
-/*
- Crea la clase CategoryController anotada con @RestController y @RequestMapping("/api/v1/categories").
- Declara un campo private final CategoryService categoryService y un constructor que lo reciba y lo asigne.
- Los métodos devolverán ResponseEntity y delegarán en categoryService.
- Añade Javadoc en español en la clase y el constructor. — generado por IA
-*/
-/* Añade @Tag con name "Categorías" y una descripción en español. — generado por IA */
 /**
  * Controlador REST que expone las operaciones CRUD de categorías en
  * /api/v1/categories.
@@ -56,20 +49,6 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    /*
-     * Crea el método findAll con GetMapping que reciba un Pageable anotado con
-     * PageableDefault(size = 10, sort = "name", direction = Sort.Direction.ASC)
-     * y devuelva ResponseEntity.ok(categoryService.findAll(pageable)).
-     * Añade Javadoc en español. — generado por IA
-     */
-    /*
-     * Añade @Operation con summary en español y @ApiResponses: 200 sin content
-     * y 400 con ErrorResponse si el campo de ordenación no es válido. — generado por IA
-     */
-    /*
-     * Añade @ParameterObject al parámetro Pageable para que springdoc muestre
-     * page, size y sort como parámetros de consulta. — generado por IA
-     */
     /**
      * Método para obtener todas las categorías con paginación.
      *
@@ -88,16 +67,6 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.findAll(pageable));
     }
 
-    /*
-     * Crea el método findById con GetMapping("/{id}") que reciba PathVariable Long
-     * id
-     * y devuelva ResponseEntity.ok(categoryService.findById(id)).
-     * Añade Javadoc en español. — generado por IA
-     */
-    /*
-     * Añade @Operation con summary en español y @ApiResponses:
-     * 200 sin content y 404 con ErrorResponse. — generado por IA
-     */
     /**
      * Método para obtener una categoría por su ID.
      *
@@ -115,17 +84,6 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.findById(id));
     }
 
-    /*
-     * Crea el método create con PostMapping que reciba RequestBody
-     * CategoryRequestDTO dto
-     * y devuelva
-     * ResponseEntity.status(HttpStatus.CREATED).body(categoryService.create(dto)).
-     * Añade Javadoc en español. — generado por IA
-     */
-    /*
-     * Añade @Operation con summary en español y @ApiResponses: 201 sin content. —
-     * generado por IA
-     */
     /**
      * Método para crear una nueva categoría.
      *
@@ -142,16 +100,6 @@ public class CategoryController {
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.create(categoryRequestDTO));
     }
 
-    /*
-     * Crea el método update con PutMapping("/{id}") que reciba PathVariable Long id
-     * y RequestBody CategoryRequestDTO dto
-     * y devuelva ResponseEntity.ok(categoryService.update(id, dto)).
-     * Añade Javadoc en español. — generado por IA
-     */
-    /*
-     * Añade @Operation con summary en español y @ApiResponses:
-     * 200 sin content y 404 con ErrorResponse. — generado por IA
-     */
     /**
      * Método para actualizar una categoría existente.
      *
@@ -171,17 +119,6 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.update(id, categoryRequestDTO));
     }
 
-    /*
-     * Crea el método delete con DeleteMapping("/{id}") que reciba PathVariable Long
-     * id,
-     * llame a categoryService.delete(id) y devuelva
-     * ResponseEntity.noContent().build() con tipo ResponseEntity<Void>.
-     * Añade Javadoc en español. — generado por IA
-     */
-    /*
-     * Añade @Operation con summary en español y @ApiResponses:
-     * 204 sin content y 404 con ErrorResponse. — generado por IA
-     */
     /**
      * Método para eliminar una categoría por su ID.
      *

@@ -19,11 +19,6 @@ import com.accenture.taskmanager.repository.CategoryRepository;
 import com.accenture.taskmanager.repository.TaskRepository;
 
 
-// Crea la clase CategoryServiceImpl anotada con @Service que implementa la interfaz CategoryService.
-//Implementa todos los metodos de la interfaz usando categoryRepository y categoryMapper.
-// Declara tres campos private final: CategoryRepository categoryRepository, TaskRepository taskRepository y CategoryMapper categoryMapper.
-// Añade un constructor que reciba los tres y los asigne (inyección por constructor, sin @Autowired).
-// Añade Javadoc en la clase y en el constructor, en español. — generado por IA
 
 /**
  * Implementación del servicio de gestión de categorías.
@@ -50,12 +45,6 @@ public class CategoryServiceImpl implements CategoryService {
         this.categoryMapper = categoryMapper;
     }
 
-    /*
-    Implementa findAll(Pageable pageable) con Override y Transactional(readOnly = true).
-    Convierte el resultado de categoryRepository.findAll(pageable) con page.map(categoryMapper::toResponseDTO)
-    y devuelve un nuevo PagedResponseDTO con content, number, size, totalElements, totalPages y isLast de la página.
-    Añade Javadoc en español. — generado por IA
-    */
     /**
      * Obtiene todas las categorías con paginación.
      *
@@ -76,12 +65,6 @@ public class CategoryServiceImpl implements CategoryService {
         );
     }
 
-    /*
-    Crea un método privado getCategoryOrThrow(Long id) que devuelva la Category buscada con categoryRepository.findById(id).
-    Si no existe, lanza con orElseThrow una ResponseStatusException con HttpStatus.NOT_FOUND
-    y el mensaje "Categoría no encontrada con id: " + id.
-    Añade Javadoc en español. — generado por IA
-    */
     /**
      * Obtiene una categoría por su ID o lanza una excepción si no se encuentra.
      *
@@ -91,18 +74,10 @@ public class CategoryServiceImpl implements CategoryService {
      */
     private Category getCategoryOrThrow(Long id) {
         
-        /* Devuelve la categoría con categoryRepository.findById y, si no existe, lanza
-           new NoSuchElementException("Categoría con id " + id + " no encontrada")
-           con orElseThrow — generado por IA */
         return categoryRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Categoría con id " + id + " no encontrada"));
     }
 
-    /*
-    Implementa findById(Long id) con Override y Transactional(readOnly = true).
-    Obtén la Category con getCategoryOrThrow(id) y devuélvela convertida con categoryMapper.toResponseDTO.
-    Añade Javadoc en español. — generado por IA
-    */
     /**
      * Obtiene una categoría por su ID.
      *
@@ -117,12 +92,6 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryMapper.toResponseDTO(category);
     }
 
-    /*
-    Implementa create(CategoryRequestDTO dto) con Override y Transactional.
-    Convierte el dto con categoryMapper.toEntity(dto), guárdalo con categoryRepository.save
-    y devuelve la entidad guardada convertida con categoryMapper.toResponseDTO.
-    Añade Javadoc en español. — generado por IA
-    */
     /**
      * Crea una nueva categoría.
      *
@@ -137,13 +106,6 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryMapper.toResponseDTO(savedCategory);
     }
 
-    /*
-    Implementa update(Long id, CategoryRequestDTO dto) con Override y Transactional.
-    Obtén la Category existente con getCategoryOrThrow(id); no crees una entidad nueva ni uses toEntity.
-    Modifica solo name y description con los valores del dto, sin tocar tasks.
-    Guarda con categoryRepository.save y devuelve el resultado con categoryMapper.toResponseDTO.
-    Añade Javadoc en español. — generado por IA
-    */
     /**
      * Actualiza una categoría existente.
      *
@@ -161,14 +123,6 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryMapper.toResponseDTO(updatedCategory);
     }
 
-    /*
-    Implementa delete(Long id) con Override y Transactional, sin valor de retorno.
-    Llama primero a getCategoryOrThrow(id) para lanzar 404 si no existe.
-    Si taskRepository.existsByCategoryId(id) es true, lanza una ResponseStatusException con HttpStatus.CONFLICT
-    y el mensaje "La categoría con id " + id + " tiene tareas asociadas".
-    Si no, bórrala con categoryRepository.deleteById(id).
-    Añade Javadoc en español. — generado por IA
-    */
     /**
      * Elimina una categoría por su ID.
      *

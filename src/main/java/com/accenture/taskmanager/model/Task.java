@@ -22,24 +22,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
-/*Esta clase Task representa una tarea en el sistema de gestión de tareas, 
-con atributos para almacenar la información de cada tarea. 
-Debe contener los siguientes atributos:
-- id: identificador único de la tarea.
-- title: título de la tarea.
-- description: descripción de la tarea.
-- status: estado de la tarea.
-- priority: prioridad de la tarea.
-- dueDate: fecha de vencimiento de la tarea.
-—generado por IA*/
 
-/*Convertir esta clase en una entidad JPA mapeada a la tabla task, con id autogenerado por MySQL y cada atributo asociado a su columna. Incluye las anotaciones @Entity,@Table("task"),@Id,@GeneratedValue(IDENTITY) para ello.
-
-Añade a los campos que ya hay en la clase Task el campo createdAt de tipo LocalDateTime y categoryId de tipo Long, que admita null.
-
-Añade @Column a los campos cuyo nombre no coincide con la columna de SQL (due_date, created_at, category_id). 
-—generado por IA
-*/
 
 /**
  * Clase Task, que representa una tarea en el sistema de gestión de tareas.
@@ -63,7 +46,6 @@ public class Task {
     @Column(name = "description")
     private String description;
 
-    //Añade @Enumerated(EnumType.STRING) a los campos status y priority de la clase Task para que los valores de los enums TaskStatus y TaskPriority se almacenen como texto en la base de datos. —generado por IA
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private TaskStatus status;
@@ -78,27 +60,10 @@ public class Task {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    /*
-    Añade a la entidad Task el campo Category category como una nueva relación JPA.
-    Utiliza @ManyToOne(fetch = FetchType.LAZY) y @JoinColumn(name = "category_id").
-    Si existe el atributo categoryId de tipo Long mapeado a la columna category_id, sustitúyelo por esta relación para evitar mapear dos veces la misma columna.
-    Conserva el resto de los campos y métodos existentes de Task.
-    Añade Javadoc en español para el nuevo atributo.
-    No cambies los endpoints ni la lógica del Controller o del Service.
-    —generado por IA */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
-    /*Añade a la entidad Task el campo Set<Tag> tags para representar la relación muchos a muchos con Tag.
-    Utiliza @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}).
-    Configura @JoinTable(name = "task_tag") como lado propietario de la relación.
-    Utiliza joinColumns para la columna que referencia a Task e inverseJoinColumns para la columna que referencia a Tag.
-    Comprueba los nombres reales de las columnas de task_tag antes de configurarlas.
-    No utilices CascadeType.ALL ni CascadeType.REMOVE.
-    Conserva el resto de los campos y métodos existentes de Task y añade Javadoc en español para el nuevo atributo.
-    No cambies los endpoints ni la lógica del Controller o del Service.
-    —generado por IA*/
     @ManyToMany(fetch = FetchType.LAZY,
                 cascade = {CascadeType.PERSIST, CascadeType.MERGE}
     )
@@ -282,14 +247,6 @@ public class Task {
         this.tags = tags;
     }
 
-    /*
-    Añade un método con la anotación @PrePersist que se ejecute antes de insertar una nueva tarea en la base de datos.
-    Si el atributo createdAt es null, asígnale la fecha y hora actuales mediante LocalDateTime.now().
-    Si createdAt ya tiene un valor, consérvalo sin modificarlo.
-    El método debe llamarse onCreate() y tener visibilidad protected.
-    No modifiques el resto de la clase.
-    —generado por IA
-    */
     @PrePersist
     protected void onCreate() {
         if (createdAt == null) {

@@ -10,15 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-/*Crea la entidad JPA Category en el paquete com.accenture.taskmanager.model.
-Mapea la clase a la tabla category mediante @Entity y @Table(name = "category").
-Añade los campos id de tipo Long, name de tipo String y description de tipo String.
-El campo id debe utilizar @Id y @GeneratedValue(strategy = GenerationType.IDENTITY).
-Añade una colección de taras mediante @OneToMany(mappedBy = "category", fetch = FetchType.LAZY).
-No configures CascadeType ni añadas una JoinColumn en el lado inverso.
-Incluye un constructor sin argumentos, los métodos necesarios y sus Javadoc en español, además del Javadoc de la clase.
-No crees Repository, Service ni Controller.
-—generado por IA*/
 /**
  * Clase que representa una categoría de tareas en el sistema de gestión de tareas.
  * Esta clase está mapeada a la tabla "category" en la base de datos.   

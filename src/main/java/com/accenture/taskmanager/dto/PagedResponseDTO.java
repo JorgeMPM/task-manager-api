@@ -2,10 +2,6 @@ package com.accenture.taskmanager.dto;
 
 import java.util.List;
 
-/*
-Crea un record genérico PagedResponseDTO<T> para las respuestas paginadas de la API con: content (List<T>), pageNumber (int), pageSize (int), totalElements (long), totalPages (int) y last (boolean)
-Añade javadoc en español a nivel de clase con un @param por cada componente y por el parámetro de tipo T — generado por IA.
-*/
 /**
  * DTO de respuesta paginada para la API.
  *

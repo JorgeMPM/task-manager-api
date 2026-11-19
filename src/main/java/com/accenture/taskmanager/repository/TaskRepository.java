@@ -13,11 +13,10 @@ import com.accenture.taskmanager.model.Task;
 import com.accenture.taskmanager.model.TaskPriority;
 import com.accenture.taskmanager.model.TaskStatus;
 
-/*
-Crea la interfaz TaskRepository en el paquete com.accenture.taskmanager.repository que extiende JpaRepository<Task, Long>. 
-Declara los métodos findByStatus(TaskStatus status), findByPriority(TaskPriority priority) y findByStatusAndPriority(TaskStatus status, TaskPriority priority), todos devolviendo List<Task>. 
-No añadas implementación. Añade Javadoc en español a la interfaz y a cada método. Usa un comentario para el autocompletado. 
-- generado con IA*/
+/**
+ * Repositorio de tareas que proporciona métodos para realizar operaciones CRUD 
+ * y consultas personalizadas en la entidad Task.
+ */
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
     /**
@@ -36,7 +35,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
      */
     List<Task> findByPriority(TaskPriority priority);
 
-    // Crea un método de búsqueda por status y priority que acepte un parámetro Pageable y devuelva Page<Task>. —generado por IA
     /**
      * Encuentra todas las tareas con un estado y una prioridad específicos con paginación.
      *
@@ -47,7 +45,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
      */
     Page<Task> findByStatusAndPriority(TaskStatus status, TaskPriority priority, Pageable pageable);
 
-    // Crea un método de búsqueda por categoryId que mantenga la consulta JPQL existente, acepte un parámetro Pageable y devuelva Page<Task>. —generado por IA
     /**
      * Encuentra todas las tareas que pertenecen a una categoría específica con paginación.
      * @param categoryId el ID de la categoría a buscar
@@ -57,7 +54,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("SELECT t FROM Task t WHERE t.category.id = :categoryId")
     Page<Task> findByCategoryId(@Param("categoryId") Long categoryId, Pageable pageable);
 
-    // Crea un método de búsqueda por tagId que mantenga la consulta JPQL existente, acepte un parámetro Pageable y devuelva Page<Task>. —generado por IA
     /**
      * Encuentra todas las tareas asociadas a una etiqueta específica con paginación.
      * @param tagId el ID de la etiqueta a buscar
@@ -67,8 +63,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("SELECT t FROM Task t JOIN t.tags tag WHERE tag.id = :tagId")
     Page<Task> findByTagId(@Param("tagId") Long tagId, Pageable pageable);
 
-    // Buscar tareas con fecha límite anterior a una fecha: utiliza @Query con JPQL para recuperar las tareas cuya propiedad dueDate sea anterior a la fecha recibida. Añade javadoc en españo.
-    // -generado por IA.
     /**
      * Encuentra todas las tareas cuya fecha límite sea anterior a una fecha específica.
      * @param dueDate la fecha límite a comparar
@@ -77,8 +71,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("SELECT t FROM Task t WHERE t.dueDate < :dueDate")
     List<Task> findByDueDateBefore(@Param("dueDate") LocalDate dueDate);
 
-    // Contar tareas de un status concreto: utiliza @Query con JPQL para contar cuántas tareas tienen el estado recibido como parámetro. Añade javadoc en español.
-    // -generado por IA.
     /**
      * Cuenta cuántas tareas tienen un estado específico.
      * @param status el estado de la tarea a contar
@@ -87,7 +79,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("SELECT COUNT(t) FROM Task t WHERE t.status = :status")
     long countByStatus(@Param("status") TaskStatus status);
 
-    // Añade un método derivado que indique si existe alguna tarea asociada a una categoría por su id. Añade javadoc a nivel de metodo en español. — generado por IA
     /**
      * Verifica si existe al menos una tarea asociada a una categoría específica por su ID.
      * @param categoryId el ID de la categoría a verificar
