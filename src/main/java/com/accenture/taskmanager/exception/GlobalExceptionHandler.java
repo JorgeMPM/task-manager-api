@@ -24,10 +24,6 @@ import com.accenture.taskmanager.dto.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import tools.jackson.databind.exc.InvalidFormatException;
 
-/* Crea la clase GlobalExceptionHandler anotada con @RestControllerAdvice que centraliza
-   el manejo de errores de toda la API y responde siempre con ErrorResponse.
-   Incluye un Logger de SLF4J llamado log.
-   Añade javadoc a nivel de clase en español. — generado por IA */
 
 /**
  * Maneja las excepciones de manera global en la API y devuelve respuestas de error consistentes.
@@ -39,11 +35,6 @@ public class GlobalExceptionHandler {
 
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    /* Método privado buildResponse que recibe HttpStatus status, String message,
-       HttpServletRequest request y List<String> errors, y devuelve
-       ResponseEntity<ErrorResponse> con timestamp LocalDateTime.now(),
-       status.value(), status.getReasonPhrase(), message, request.getRequestURI()
-       y errors. Añade javadoc en español. — generado por IA */
     /**
      * Construye una respuesta de error consistente para el cliente.
      *
@@ -65,10 +56,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, status);
     }
 
-    /* Método handleTaskNotFound anotado con @ExceptionHandler(TaskNotFoundException.class)
-       que recibe TaskNotFoundException ex y HttpServletRequest request, y devuelve
-       buildResponse con HttpStatus.NOT_FOUND, ex.getMessage(), request y null.
-       Añade javadoc en español. — generado por IA */
     /**
      * Maneja la excepción TaskNotFoundException y devuelve una respuesta de error con estado 404.
      * @param ex La excepción lanzada cuando no se encuentra la tarea.
@@ -81,10 +68,6 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.NOT_FOUND, ex.getMessage(), request, null);
     }
 
-    /* Método handleNoSuchElement anotado con @ExceptionHandler(NoSuchElementException.class)
-       que recibe NoSuchElementException ex y HttpServletRequest request, y devuelve
-       buildResponse con HttpStatus.NOT_FOUND, ex.getMessage(), request y null.
-       Añade javadoc en español. No añadas log. — generado por IA */
     /**
      * Maneja la excepción NoSuchElementException y devuelve una respuesta de error con estado 404.
      * @param ex La excepción lanzada cuando no se encuentra un elemento.
@@ -96,12 +79,6 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.NOT_FOUND, ex.getMessage(), request, null);
     }
 
-    /* Método handleValidation anotado con @ExceptionHandler(MethodArgumentNotValidException.class)
-       que recibe MethodArgumentNotValidException ex y HttpServletRequest request.
-       Obtiene ex.getBindingResult().getFieldErrors() y con stream los convierte en
-       una List<String> con el formato "campo: mensaje" (getField() y getDefaultMessage()).
-       Devuelve buildResponse con HttpStatus.BAD_REQUEST, "Error de validación",
-       request y esa lista. Añade javadoc en español. No añadas log. — generado por IA */
     /**
      * Maneja la excepción MethodArgumentNotValidException y devuelve una respuesta de error con estado 400.
      * @param ex La excepción lanzada cuando la validación de argumentos falla.
@@ -120,14 +97,6 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.BAD_REQUEST, "Error de validación", request, errors);
     }
 
-    /* Método handleNotReadable anotado con @ExceptionHandler(HttpMessageNotReadableException.class)
-       que recibe HttpMessageNotReadableException ex y HttpServletRequest request.
-       Si ex.getCause() es InvalidFormatException (de tools.jackson.databind.exc) y su getPath()
-       no está vacío, el mensaje es "El valor 'X' no es válido para el campo 'Y'", con X = getValue()
-       e Y = getPropertyName() del último elemento de getPath().
-       Si no, el mensaje es "El cuerpo de la petición está mal formado".
-       Devuelve buildResponse con HttpStatus.BAD_REQUEST, el mensaje, request y null.
-       Añade javadoc en español. No añadas log. — generado por IA */
     /**
      * Maneja la excepción HttpMessageNotReadableException y devuelve una respuesta de error con estado 400.
      * @param ex La excepción lanzada cuando el cuerpo de la solicitud no se puede leer o parsear.
@@ -144,10 +113,6 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.BAD_REQUEST, message, request, null);
     }
 
-    /* Método handleIllegalArgument anotado con @ExceptionHandler(IllegalArgumentException.class)
-       que recibe IllegalArgumentException ex y HttpServletRequest request, y devuelve
-       buildResponse con HttpStatus.BAD_REQUEST, ex.getMessage(), request y null.
-       Añade javadoc en español. No añadas log. — generado por IA */
     /**
      * Maneja la excepción IllegalArgumentException y devuelve una respuesta de error con estado 400.
      * @param ex La excepción lanzada cuando se pasa un argumento ilegal o inapropiado.
@@ -159,11 +124,6 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.BAD_REQUEST, ex.getMessage(), request, null);
     }
 
-    /* Método handleTypeMismatch anotado con @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-       que recibe MethodArgumentTypeMismatchException ex y HttpServletRequest request.
-       El mensaje es "El valor 'X' no es válido para el parámetro 'Y'", con X = ex.getValue()
-       e Y = ex.getName(). Devuelve buildResponse con HttpStatus.BAD_REQUEST, el mensaje,
-       request y null. Añade javadoc en español. No añadas log. — generado por IA */
     /**
      * Maneja la excepción MethodArgumentTypeMismatchException y devuelve una respuesta de error con estado 400.
      * @param ex La excepción lanzada cuando hay un desajuste de tipo en los argumentos del método.
@@ -176,11 +136,6 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.BAD_REQUEST, message, request, null);
     }
 
-    /* Método handleMissingParameter anotado con @ExceptionHandler(MissingServletRequestParameterException.class)
-       que recibe MissingServletRequestParameterException ex y HttpServletRequest request.
-       El mensaje es "Falta el parámetro obligatorio 'X'", con X = ex.getParameterName().
-       Devuelve buildResponse con HttpStatus.BAD_REQUEST, el mensaje, request y null.
-       Añade javadoc en español. No añadas log. — generado por IA */
     /**
      * Maneja la excepción MissingServletRequestParameterException y devuelve una respuesta de error con estado 400.
      * @param ex La excepción lanzada cuando falta un parámetro obligatorio en la solicitud.
@@ -193,11 +148,6 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.BAD_REQUEST, message, request, null);
     }
 
-    /* Método handlePropertyReference anotado con @ExceptionHandler(PropertyReferenceException.class)
-       de org.springframework.data.core, que recibe PropertyReferenceException ex y HttpServletRequest request.
-       El mensaje es "El campo de ordenación 'X' no es válido", con X = ex.getPropertyName().
-       Devuelve buildResponse con HttpStatus.BAD_REQUEST, el mensaje, request y null.
-       Añade javadoc en español. No añadas log. — generado por IA */
     /**
      * Maneja la excepción PropertyReferenceException y devuelve una respuesta de error con estado 400.
      * @param ex La excepción lanzada cuando se hace referencia a un campo de ordenación no válido.
@@ -210,10 +160,6 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.BAD_REQUEST, message, request, null);
     }
 
-    /* Método handleNoResourceFound anotado con @ExceptionHandler(NoResourceFoundException.class)
-       que recibe NoResourceFoundException ex y HttpServletRequest request, y devuelve
-       buildResponse con HttpStatus.NOT_FOUND, "La ruta solicitada no existe", request y null.
-       Añade javadoc en español. No añadas log. — generado por IA */
     /**
      * Maneja la excepción NoResourceFoundException y devuelve una respuesta de error con estado 404.
      * @param ex La excepción lanzada cuando no se encuentra el recurso solicitado.
@@ -225,11 +171,6 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.NOT_FOUND, "La ruta solicitada no existe", request, null);
     }
 
-    /* Método handleMethodNotSupported anotado con @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-       que recibe HttpRequestMethodNotSupportedException ex y HttpServletRequest request.
-       El mensaje es "El método X no está permitido en esta ruta", con X = ex.getMethod().
-       Devuelve buildResponse con HttpStatus.METHOD_NOT_ALLOWED, el mensaje, request y null.
-       Añade javadoc en español. No añadas log. — generado por IA */
     /**
      * Maneja la excepción HttpRequestMethodNotSupportedException y devuelve una respuesta de error con estado 405.
      * @param ex La excepción lanzada cuando se utiliza un método HTTP no permitido en la ruta solicitada.
@@ -242,11 +183,6 @@ public class GlobalExceptionHandler {
         return buildResponse(HttpStatus.METHOD_NOT_ALLOWED, message, request, null);
     }
 
-    /* Método handleResponseStatus anotado con @ExceptionHandler(ResponseStatusException.class)
-       que recibe ResponseStatusException ex y HttpServletRequest request.
-       Obtiene el HttpStatus con HttpStatus.valueOf(ex.getStatusCode().value()) y devuelve
-       buildResponse con ese status, ex.getReason(), request y null.
-       Añade javadoc en español. No añadas log. — generado por IA */
     /**
      * Maneja la excepción ResponseStatusException y devuelve una respuesta de error con el estado correspondiente.
      * @param ex La excepción lanzada con un estado HTTP específico.
@@ -259,12 +195,6 @@ public class GlobalExceptionHandler {
         return buildResponse(status, ex.getReason(), request, null);
     }
 
-    /* Método handleGeneric anotado con @ExceptionHandler(Exception.class)
-       que recibe Exception ex y HttpServletRequest request.
-       Registra el error con log.error("Error no controlado en {}", request.getRequestURI(), ex)
-       y devuelve buildResponse con HttpStatus.INTERNAL_SERVER_ERROR,
-       "Error interno del servidor", request y null. No uses ex.getMessage() en la respuesta.
-       Añade javadoc en español. — generado por IA */
     /**
      * Maneja cualquier excepción no controlada y devuelve una respuesta de error con estado 500.
      * Registra el error en el log para su análisis posterior. 

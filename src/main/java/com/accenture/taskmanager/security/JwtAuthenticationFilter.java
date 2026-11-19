@@ -15,15 +15,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/*
- Crea la clase JwtAuthenticationFilter anotada con @Component que extienda OncePerRequestFilter, con Javadoc de clase en español, e inyecta JwtService por constructor.
- Implementa doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) con este flujo:
- 1) lee la cabecera Authorization; si es nula o no empieza por "Bearer ", llama a filterChain.doFilter(request, response) y termina con return
- 2) extrae el token quitando el prefijo "Bearer ";
- 3) si jwtService.isTokenValid(token) es true y SecurityContextHolder.getContext().getAuthentication() es null, obtiene el username con jwtService.extractUsername(token), crea un UsernamePasswordAuthenticationToken(username, null, Collections.emptyList()), añade los detalles con WebAuthenticationDetailsSource y lo guarda con SecurityContextHolder.getContext().setAuthentication(...)
- 4) en todos los casos llama a filterChain.doFilter(request, response); si el token no es válido, no lances excepción ni escribas la respuesta.
- Usa jakarta.servlet, no javax.servlet. No uses UserDetailsService. Añade Javadoc en español en la clase y en todos los métodos. — generado por IA
-*/
 /**
  * Filtro de autenticación que intercepta las solicitudes HTTP y valida los tokens JWT.
  * Si el token es válido, establece la autenticación en el contexto de seguridad de Spring.

@@ -1,9 +1,5 @@
 package com.accenture.taskmanager.exception;
 
-/* Crea la clase TaskNotFoundException que extiende RuntimeException.
-   Constructor que recibe el id (Long) y llama a super con el mensaje
-   "Tarea con id " + id + " no encontrada".
-   Añade javadoc a nivel de clase y a nivel de constructor en español. — generado por IA */
 
 /**
  * Excepción lanzada cuando no se encuentra una tarea con un id específico.

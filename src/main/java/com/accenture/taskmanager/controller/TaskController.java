@@ -32,35 +32,14 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 
-/* Añade @Tag con name "Tareas" y una descripción en español. — generado por IA */
 
 /**
- * Esta clase TaskController debe ser un REST Controller de Spring Boot
- * encargado de gestionar las peticiones relacionadas con las tareas
- * 
- * @author jorge martin perez moreno
- * @version 1.0
+ * Controlador REST que gestiona las peticiones relacionadas con las tareas.
  */
 @Tag(name = "Tareas", description = "Operaciones relacionadas con la gestión de tareas")
 @RestController
 public class TaskController {
 
-    /*
-     * Inyecta TaskService en TaskController por constructor, con un atributo
-     * privado final.
-     * Implementa los cinco endpoints actuales sin cambiar sus rutas, anotaciones ni
-     * códigos HTTP, delegando en TaskService sin lógica propia:
-     * - getAllTasks: devuelve ResponseEntity.ok con taskService.findAll().
-     * - getTaskById: si taskService.findById devuelve null, responde 404 NOT FOUND;
-     * si no, 200 OK con la tarea.
-     * - createTask: llama a taskService.create y responde 201 CREATED con la tarea.
-     * - updateTask: si taskService.update devuelve null, responde 404 NOT FOUND; si
-     * no, 200 OK con la tarea actualizada.
-     * - deleteTask: si taskService.delete devuelve true, responde 204 NO CONTENT;
-     * si devuelve false, 404 NOT FOUND.
-     * Mantén el Javadoc de cada método. No añadas lógica de negocio.
-     * — generado por IA.
-     */
     private final TaskService taskService;
 
     /**
@@ -72,16 +51,6 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    // Reescribe getTasks para que devuelva
-    // ResponseEntity<PagedResponseDTO<TaskResponseDTO>>, manteniendo la misma ruta,
-    // los parámetros page, size y sort con sus valores por defecto, el límite de
-    // 100 y la creación del Pageable, con el mismo Javadoc. — generado por IA
-    /*
-     * Añade @Operation con summary y description en español, indicando que sort
-     * tiene formato campo,dirección y que size está limitado a 100,
-     * y @ApiResponses:
-     * 200 sin content y 400 con ErrorResponse. — generado por IA
-     */
     /**
      * Método que devuelve una página de tareas según la paginación y orden
      * especificados, envuelta en un PagedResponseDTO.
@@ -107,13 +76,6 @@ public class TaskController {
         return ResponseEntity.ok(taskService.findAll(pageable));
     }
 
-    // Reescribe getTaskById para que devuelva ResponseEntity<TaskResponseDTO> y use
-    // TaskResponseDTO en la variable local, manteniendo la misma ruta y la misma
-    // lógica de 404 y 200, con el mismo Javadoc. — generado por IA
-    /*
-     * Añade @Operation con summary en español y @ApiResponses:
-     * 200 sin content y 404 con ErrorResponse. — generado por IA
-     */
     /**
      * Método que devuelve una tarea específica por su id.
      * 
@@ -133,19 +95,6 @@ public class TaskController {
         return ResponseEntity.ok(taskResponseDTO);
     }
 
-    // Reescribe createTask para que reciba un @RequestBody TaskRequestDTO
-    // taskRequestDTO y devuelva ResponseEntity<TaskResponseDTO>, manteniendo la
-    // misma ruta y el código 201 CREATED, con Javadoc actualizado para el nuevo
-    // parámetro. — generado por IA
-    /*
-     * Añade @Valid al parámetro TaskRequestDTO para activar la validación —
-     * generado por IA
-     */
-    /*
-     * Añade @Operation con summary y description en español, indicando que dueDate
-     * es obligatoria cuando la prioridad es HIGH, y @ApiResponses:
-     * 201 sin content y 400 con ErrorResponse. — generado por IA
-     */
     /**
      * Método que crea una nueva tarea a partir de un TaskRequestDTO.
      * 
@@ -164,19 +113,6 @@ public class TaskController {
         return ResponseEntity.status(201).body(createdTask);
     }
 
-    // Reescribe updateTask para que reciba @PathVariable Long id y un @RequestBody
-    // TaskRequestDTO taskRequestDTO y devuelva ResponseEntity<TaskResponseDTO>,
-    // manteniendo la misma ruta y la misma lógica de 404 y 200, con Javadoc
-    // actualizado para el nuevo parámetro. — generado por IA
-    /*
-     * Añade @Valid al parámetro TaskRequestDTO para activar la validación —
-     * generado por IA
-     */
-    /*
-     * Añade @Operation con summary y description en español, indicando que dueDate
-     * es obligatoria cuando la prioridad es HIGH, y @ApiResponses: 200 sin content,
-     * 400 con ErrorResponse y 404 con ErrorResponse. — generado por IA
-     */
     /**
      * Método que actualiza una tarea existente por su id a partir de un
      * TaskRequestDTO.
@@ -200,10 +136,6 @@ public class TaskController {
         return ResponseEntity.ok(updatedTask);
     }
 
-    /*
-     * Añade @Operation con summary en español y @ApiResponses:
-     * 204 sin content y 404 con ErrorResponse. — generado por IA
-     */
     /**
      * Método que elimina una tarea existente por su id.
      * 
@@ -222,18 +154,6 @@ public class TaskController {
         return ResponseEntity.noContent().build();
     }
 
-    // Reescribe getTasksByCategory para que devuelva
-    // ResponseEntity<PagedResponseDTO<TaskResponseDTO>> y use ese tipo en la
-    // variable local, manteniendo la misma ruta, categoryId, los parámetros page,
-    // size y sort con sus valores por defecto, el límite de 100 y la creación del
-    // Pageable, con el mismo Javadoc. — generado por IA
-    /*
-     * Añade @Operation con summary y description en español, indicando que sort
-     * tiene formato campo,dirección, que size está limitado a 100 y que si la
-     * categoría
-     * no existe devuelve una página vacía, y @ApiResponses: 200 sin content
-     * y 400 con ErrorResponse. — generado por IA
-     */
     /**
      * Método que devuelve una página de tareas de una categoría específica según la
      * paginación y orden especificados, envuelta en un PagedResponseDTO.
@@ -262,18 +182,6 @@ public class TaskController {
         return ResponseEntity.ok(tasksPage);
     }
 
-    // Reescribe getTasksByTag para que devuelva
-    // ResponseEntity<PagedResponseDTO<TaskResponseDTO>> y use ese tipo en la
-    // variable local, manteniendo la misma ruta, tagId, los parámetros page, size y
-    // sort con sus valores por defecto, el límite de 100 y la creación del
-    // Pageable, con el mismo Javadoc. — generado por IA
-    /*
-     * Añade @Operation con summary y description en español, indicando que sort
-     * tiene formato campo,dirección, que size está limitado a 100 y que si la
-     * etiqueta
-     * no existe devuelve una página vacía, y @ApiResponses: 200 sin content
-     * y 400 con ErrorResponse. — generado por IA
-     */
     /**
      * Método que devuelve una página de tareas de una etiqueta específica según la
      * paginación y orden especificados, envuelta en un PagedResponseDTO.
@@ -302,18 +210,6 @@ public class TaskController {
         return ResponseEntity.ok(tasksPage);
     }
 
-    // Reescribe getTasksByStatusAndPriority para que devuelva
-    // ResponseEntity<PagedResponseDTO<TaskResponseDTO>> y use ese tipo en la
-    // variable local, manteniendo la misma ruta, status, priority, los parámetros
-    // page, size y sort con sus valores por defecto, el límite de 100 y la creación
-    // del Pageable, con el mismo Javadoc. — generado por IA
-    /*
-     * Añade @Operation con summary y description en español, indicando que status
-     * y priority son obligatorios, que sort tiene formato campo,dirección y que
-     * size
-     * está limitado a 100, y @ApiResponses: 200 sin content
-     * y 400 con ErrorResponse. — generado por IA
-     */
     /**
      * Método que devuelve una página de tareas de un estado y prioridad específicos
      * según la paginación y orden especificados, envuelta en un PagedResponseDTO.
@@ -344,15 +240,6 @@ public class TaskController {
         return ResponseEntity.ok(tasksPage);
     }
 
-    // Reescribe getTasksBeforeDate para que devuelva
-    // ResponseEntity<List<TaskResponseDTO>> y use ese tipo en la variable local,
-    // manteniendo la misma ruta y el parámetro date, con el mismo Javadoc. —
-    // generado por IA
-    /*
-     * Añade @Operation con summary y description en español, indicando que date
-     * es obligatoria y tiene formato yyyy-MM-dd, y @ApiResponses: 200 sin content
-     * y 400 con ErrorResponse. — generado por IA
-     */
     /**
      * Método que devuelve las tareas cuya fecha límite sea anterior a una fecha
      * específica.
@@ -372,15 +259,6 @@ public class TaskController {
         return ResponseEntity.ok(tasks);
     }
 
-    // Añade un endpoint GET en /api/v1/tasks/count-by-status que reciba status
-    // mediante @RequestParam de tipo TaskStatus y devuelva el número de tareas
-    // obtenido mediante taskService.getCountByStatus(status). Utiliza
-    // ResponseEntity<Long> y añade Javadoc en español. — generado por IA
-    /*
-     * Añade @Operation con summary en español y @ApiResponses: 200 sin content
-     * y 400 con ErrorResponse. — generado por IA
-     */
-    // -generado por IA.
     /**
      * Método que devuelve el número de tareas que tienen un estado específico.
      * 

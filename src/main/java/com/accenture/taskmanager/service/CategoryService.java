@@ -9,11 +9,6 @@ import com.accenture.taskmanager.dto.CategoryRequestDTO;
 import com.accenture.taskmanager.dto.CategoryResponseDTO;
 import com.accenture.taskmanager.dto.PagedResponseDTO;
 
-/*
- Crea la interfaz CategoryService con el CRUD básico de categorías usando DTOs:
- findAll paginado que devuelve PagedResponseDTO, findById, create, update y delete.
- Añade Javadoc en español. — generado por IA
-*/
 /**
  * Interfaz que define los servicios para la gestión de categorías.
  */

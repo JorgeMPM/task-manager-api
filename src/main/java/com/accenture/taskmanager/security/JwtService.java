@@ -12,13 +12,6 @@ import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-/*
- Crea la clase JwtService anotada con @Service, con Javadoc de clase en español. Inyecta con @Value las propiedades jwt.secret (String) y jwt.expiration (long, en milisegundos).
- Añade un método privado getSigningKey() que devuelva un SecretKey creado con Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8)), sin decodificar en Base64.
- Añade el método generateToken(String username) que construya el JWT con Jwts.builder() incluyendo subject (username), issuedAt (fecha actual) y expiration (fecha actual + jwt.expiration), lo firme con signWith(getSigningKey()) y devuelva compact().
- Usa la API de jjwt 0.13 (subject(), issuedAt(), expiration()), sin métodos deprecated como setSubject() ni la clase SignatureAlgorithm. 
- Añade Javadoc en español a nivel de clase y en todos los métodos. — generado por IA
-*/
 /**
  * Servicio que genera, lee y valida tokens JWT firmados con HS256.
  * Centraliza el uso de la librería jjwt y de la clave secreta de la aplicación.
@@ -55,10 +48,6 @@ public class JwtService {
 				.compact();
 	}
 
-    /*
-	Añade el método extractUsername(String token) que verifique la firma con Jwts.parser().verifyWith(getSigningKey()).build(), obtenga los claims con parseSignedClaims(token).getPayload() y devuelva getSubject().
-	Usa la API de jjwt 0.13, sin parserBuilder(), setSigningKey() ni parseClaimsJws(). Añade Javadoc en español. — generado por IA
-	*/
     /**
     * Extrae el nombre de usuario del token JWT proporcionado.
     * @param token El token JWT del cual se extraerá el nombre de usuario.
@@ -74,10 +63,6 @@ public class JwtService {
                 .getSubject();
     }
 
-    /*
-	Añade el método isTokenValid(String token) que devuelva true si el token tiene una firma válida y no ha expirado, verificándolo con Jwts.parser().verifyWith(getSigningKey()).build().parseSignedClaims(token),
-	y que devuelva false si se lanza JwtException o IllegalArgumentException (token mal formado, firma inválida, expirado, nulo o vacío), sin propagar la excepción. Añade Javadoc en español. — generado por IA
-	*/
     /**
     * Verifica si el token JWT proporcionado es válido.
     * @param token El token JWT a verificar.
