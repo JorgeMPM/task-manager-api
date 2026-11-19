@@ -49,6 +49,25 @@ Es el proyecto de prácticas del bootcamp **Back-End Java con GenAI** (Accenture
 ![Tests en verde](docs/capturas/taskmanager-03-tests.png)
 
 ---
+### Diagramas
+
+**Modelo de datos (ERD)**
+
+![Modelo de datos](docs/diagrams/erd.svg)
+
+**Arquitectura**
+
+![Arquitectura](docs/diagrams/arquitectura.svg)
+
+**Flujo de creación de una tarea**
+
+![Secuencia crear tarea](docs/diagrams/secuencia-crear-tarea.svg)
+
+**Ciclo de vida de una tarea**
+
+![Ciclo de vida de la tarea](docs/diagrams/ciclo-vida-tarea.svg)
+
+> Las transiciones de estado no están restringidas todavía: el estado se asigna tal cual desde el DTO. Ver [#N](https://github.com/JorgeMPM/task-manager-api/issues/N)
 
 ## Funcionalidades
 
